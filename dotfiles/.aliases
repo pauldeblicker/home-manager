@@ -1,0 +1,99 @@
+# Git
+alias git='LANG=en_US.UTF-8 git'
+alias gitcurrentbranch='git symbolic-ref --short HEAD'
+alias ga='git add'
+alias gap='git add -p'
+alias gb='git branch'
+alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+alias gco='git checkout'
+alias gcma='git commit --amend'
+alias gcmm='git commit -m'
+alias gcmn='git commit --amend --no-edit'
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gf='git fetch'
+alias gp='git push'
+alias gpsup='git push --set-upstream mine $(gitcurrentbranch)'
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbi='git rebase -i'
+alias grbs='git rebase --skip'
+alias gst='git status -sb'
+alias gsta='git stash -u'
+alias gstp='git stash pop'
+#Enabled autocompletion for git alias
+__git_complete ga _git_add
+__git_complete gap _git_add
+__git_complete gb _git_branch
+__git_complete gbda _git_branch
+__git_complete gco _git_checkout
+__git_complete gcma _git_commit
+__git_complete gcmm _git_commit
+__git_complete gcmn _git_commit
+__git_complete gd _git_diff
+__git_complete gdca _git_diff
+__git_complete gf _git_fetch
+__git_complete gp _git_push
+__git_complete gpsup _git_push
+__git_complete grb _git_rebase
+__git_complete grba _git_rebase
+__git_complete grbc _git_rebase
+__git_complete grbi _git_rebase
+__git_complete grbs _git_rebase
+__git_complete gst _git_status
+__git_complete gsta _git_stash
+__git_complete gstp _git_stash
+
+# FS reporters
+alias ls='gls --color=auto --group-directories-first'
+alias ll='ls -lA'
+alias lf='ll | grep "^-"'
+alias ld='ll | grep "^d"'
+
+# FS handlers
+alias rm='rm -i'
+alias rmf='rm -rf'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias mkdir='mkdir -v'
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias ~='cd ~'
+alias -- -='cd -'
+alias me='cd ~/Projects/Me'
+
+# Replacement
+alias cat='bat'
+alias find='fd'
+
+# Shortcuts
+alias d='docker'
+alias r='reset'
+alias v='vim'
+
+# Tmux
+function __tn {
+    if [ -n "$1" ]; then
+	(cd "$PWD"; tmux new -s "$1")
+    else
+	(cd "$PWD"; tmux new)
+    fi
+}
+
+alias tn=__tn
+alias ta="tmux a -t"
+alias tls="tmux ls"
+
+# Typos
+alias dokcer='docker'
+alias :q='exit'
+
+# Utils
+alias prettify_json='python -m json.tool'
+alias weather='curl -s "https://wttr.in/paris"'

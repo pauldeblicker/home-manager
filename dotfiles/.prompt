@@ -1,0 +1,49 @@
+#!/bin/zsh
+
+BLUE="\[\033[1;34m\]"
+GREEN="\[\033[1;32m\]"
+NONE="\[\e[0m\]"
+PURPLE="\[\033[1;35m\]"
+RED="\[\033[1;31m\]"
+YELLOW="\[\033[1;33m\]"
+
+generate_info_jobs() {
+    if [[ -n $IN_NIX_SHELL ]]
+    then
+        info_jobs="${PURPLE}[nix-shell]"
+    else
+        info_jobs="${PURPLE}\j★"
+    fi
+
+    echo $info_jobs
+}
+
+generate_info_host() {
+    echo "${GREEN}%M"
+}
+
+generate_info_path() {
+    git_branch=$(__git_ps1)
+    path_radix=$(dirname $PWD)
+    path_file=$(basename $PWD)
+
+    if [[ -n git_branch ]]
+    then
+        info_path="${BLUE}${path_radix}/${NONE}[${RED}${path_file}${YELLOW}${git_branch}${NONE}]"
+    else
+        info_path="${BLUE}${path_radix}/${path_file}"
+    fi
+
+    echo $info_path
+}
+
+function prompt_func() {
+    previous_return_value=$?
+
+    first_line="$(generate_info_host)${NONE}:$(generate_info_path)"
+    second_line="$(generate_info_jobs) ⟩ ${NONE}"
+
+    PS1 = "${first_line}\n${second_line}"
+}
+
+PROMPT_COMMAND=prompt_func

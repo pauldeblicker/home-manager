@@ -23,7 +23,7 @@
         # the path to your home.nix.
         modules = [
           { nixpkgs.overlays = [ nur.overlay (import ./overlays) ]; }
-          ./home.nix
+          ./home
         ];
 
         # Optionally use extraSpecialArgs
