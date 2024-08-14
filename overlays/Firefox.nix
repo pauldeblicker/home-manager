@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   phases = [ "unpackPhase" "installPhase" ];
   installPhase = ''
       mkdir -p "$out/Applications"
-      cp -r Firefox.app "$out/Applications/Firefoxi2.app"
+      cp -r Firefox.app "$out/Applications/Firefox.app"
     '';
 
   src = fetchurl {

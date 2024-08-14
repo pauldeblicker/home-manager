@@ -22,31 +22,9 @@ alias grbs='git rebase --skip'
 alias gst='git status -sb'
 alias gsta='git stash -u'
 alias gstp='git stash pop'
-#Enabled autocompletion for git alias
-__git_complete ga _git_add
-__git_complete gap _git_add
-__git_complete gb _git_branch
-__git_complete gbda _git_branch
-__git_complete gco _git_checkout
-__git_complete gcma _git_commit
-__git_complete gcmm _git_commit
-__git_complete gcmn _git_commit
-__git_complete gd _git_diff
-__git_complete gdca _git_diff
-__git_complete gf _git_fetch
-__git_complete gp _git_push
-__git_complete gpsup _git_push
-__git_complete grb _git_rebase
-__git_complete grba _git_rebase
-__git_complete grbc _git_rebase
-__git_complete grbi _git_rebase
-__git_complete grbs _git_rebase
-__git_complete gst _git_status
-__git_complete gsta _git_stash
-__git_complete gstp _git_stash
 
 # FS reporters
-alias ls='gls --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -lA'
 alias lf='ll | grep "^-"'
 alias ld='ll | grep "^d"'
