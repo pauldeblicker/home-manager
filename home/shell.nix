@@ -111,7 +111,9 @@
     zsh = {
       enable = true;
       enableCompletion = true;
-      enableAutosuggestions = true;
+      autosuggestion = {
+        enable = true;
+      };
       completionInit = "autoload -U compinit && compinit -u";
       antidote = {
         enable = true;
